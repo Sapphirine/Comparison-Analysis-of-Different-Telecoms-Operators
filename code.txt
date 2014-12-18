@@ -1,0 +1,117 @@
+public int checkGrayCode(byte A, byte B) {
+    if (A == B)
+        return 0;
+    byte C = (byte)(A ^ B);
+    return ((byte)(C & (C-1))==0) ? 1 : 0;
+}
+
+
+public boolean isRotate(String s1, String s2) {
+    if (s1 == null && s2 == null)
+        return true;
+    if (s1 == null || s2 == null || s1.length() != s2.length())
+        return false;
+    String s3 = s1 + s1;
+    return s3.indexOf(s2) != -1 ? true : false;
+}
+
+public static int checkTheNumberOf1 (int num) {
+    int res = 0;
+    for (int i = 0; i < 8; i++) {
+        if ((num >> i & 1) == 1)
+            res++;
+    }
+    return res;
+}
+
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+public String eliminateVowel(String s) {
+    if (s==null || s.length()==0)
+        return "";
+    String vowel="AEIOUaeiou";
+    StringBuilder sb=new StringBuilder();
+    for (int i=0;i<s.length();i++) {
+        char tmp=s.charAt(i);
+        if (vowel.indexOf(tmp)==-1)
+            sb.append(tmp);
+    }
+    return sb.toString();
+}
+
+public int checkGrayCode(byte A, byte B) {
+    if (A==B)
+        return 0;
+    byte C=(byte) (A^B);
+    if ((byte)(C&(C-1))==0)
+        return 1;
+    else return 0;
+}
+
+public boolean isRotate(String s1, String s2) {
+    if (s1==null && s2==null)
+        return true;
+    if (s1==null || s2==null || s1.length()!=s2.length())
+        return false;
+    String s3=s1+s1;
+    return s3.contains(s2);
+}
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+int -> byte[]
+result[0] = (byte)((i >> 24) & 0xFF);
+result[1] = (byte)((i >> 16) & 0xFF);
+result[2] = (byte)((i >> 8) & 0xFF); 
+result[3] = (byte)(i & 0xFF);
+
+byte -> int
+int i = b & 0xff;
+
+int -> byte
+byte b = (byte) a;
+System.out.println(Integer.toBinaryString(a));
+
+check the number of 1
+public boolean isRotate(String s1, String s2) {
+        int res=0;
+        for (int i=0;i<8;i++) {
+            if (((A>>i)&1)==1)
+                res++;
+        }
+        return res;
+    }
+
+priority -,>>, ==, &
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+rotation point 
+s1 = x + y = xy;
+s2 = y + x = yx;
+s3 = s1 + s1 = yxyx;
+s3 contains s2
+
+public static boolean strStr (String A, String B) {
+        int len = B.length();
+        int tmpBase = 1;
+        int hashcode = 0;
+        int hash = 0;
+        for (int i = 0; i < len; i++) {
+            hashcode += tmpBase * (B.charAt(i) - 'a' + 1);
+            tmpBase *= 29;
+        }
+        tmpBase = 1;
+        for (int i = 0; i < len; i++) {
+            hash += tmpBase * (A.charAt(i) - 'a' + 1);
+            tmpBase *= 29;
+        }
+        if (hash == hashcode)
+            return true;
+        tmpBase /= 29;
+        for (int i = len; i < A.length(); i++) {
+            hash /= 29;
+            hash += tmpBase * (A.charAt(i) - 'a' + 1);
+            if (hash == hashcode)
+                return true;
+        }
+        return false;
+    }
